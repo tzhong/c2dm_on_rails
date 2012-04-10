@@ -15,7 +15,16 @@ require 'uri'
 # 
 # As each C2dm::Notification is sent the <tt>sent_at</tt> column will be timestamped,
 # so as to not be sent again.
-class C2dm::Notification < C2dm::Base
+class C2dm::Notification < ActiveRecord::Base
+
+  # If derived for C2dm::Base a C2dmBase table would be required
+  # in DB, which throws an error when creating a instance.
+  # 
+  def self.table_name # :nodoc:
+    self.to_s.gsub("::", "_").tableize
+  end
+
+
   include ::ActionView::Helpers::TextHelper
   extend ::ActionView::Helpers::TextHelper
   serialize :data
