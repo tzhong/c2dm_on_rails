@@ -4,16 +4,15 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{c2dm_on_rails}
-  s.version = "0.2.0"
+  s.name = "c2dm_on_rails"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Julius de Bruijn"]
-  s.date = %q{2011-08-26}
-  s.description = %q{C2DM on Rails is a Ruby on Rails gem that allows you to
-easily add Android Cloud to Device Messaging support to your Rails application.
-}
-  s.email = %q{julius.bruijn@sponsorpay.com}
+  s.authors = ["Tie Zhong"]
+  s.date = "2012-04-16"
+  s.description = "This is a fork from popular c2dm_on_rails. C2DM on Rails is a Ruby on Rails gem that allows you to easily add Android Cloud to Device Messaging support to your Rails application. This fork adds a daemon to do the actual push.\n"
+  s.email = "zhongtie@yahoo.com"
+  s.executables = ["c2dms"]
   s.extra_rdoc_files = [
     "LICENSE",
     "README.textile"
@@ -26,10 +25,9 @@ easily add Android Cloud to Device Messaging support to your Rails application.
     "Manifest",
     "README.textile",
     "Rakefile",
-    "VERSION",
+    "bin/c2dms",
     "c2dm_on_rails.gemspec",
     "lib/c2dm_on_rails.rb",
-    "lib/c2dm_on_rails/app/models/c2dm/base.rb",
     "lib/c2dm_on_rails/app/models/c2dm/device.rb",
     "lib/c2dm_on_rails/app/models/c2dm/notification.rb",
     "lib/c2dm_on_rails/c2dm_on_rails.rb",
@@ -40,10 +38,10 @@ easily add Android Cloud to Device Messaging support to your Rails application.
     "lib/generators/templates/c2dm_migrations/create_c2dm_devices.rb",
     "lib/generators/templates/c2dm_migrations/create_c2dm_notifications.rb"
   ]
-  s.homepage = %q{http://github.com/pimeys/c2dm_on_rails}
+  s.homepage = "http://github.com/tzhong/c2dm_on_rails"
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.2}
-  s.summary = %q{Android Cloud to Device Messaging (push notifications) on Rails}
+  s.rubygems_version = "1.8.15"
+  s.summary = "Android Cloud to Device Messaging (push notifications) on Rails"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -52,15 +50,18 @@ easily add Android Cloud to Device Messaging support to your Rails application.
       s.add_runtime_dependency(%q<jeweler>, [">= 0"])
       s.add_runtime_dependency(%q<configatron>, [">= 0"])
       s.add_runtime_dependency(%q<gdata>, [">= 0"])
+      s.add_runtime_dependency(%q<c2dm_on_rails>, [">= 0"])
     else
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<configatron>, [">= 0"])
       s.add_dependency(%q<gdata>, [">= 0"])
+      s.add_dependency(%q<c2dm_on_rails>, [">= 0"])
     end
   else
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<configatron>, [">= 0"])
     s.add_dependency(%q<gdata>, [">= 0"])
+    s.add_dependency(%q<c2dm_on_rails>, [">= 0"])
   end
 end
 
