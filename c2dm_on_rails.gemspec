@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "c2dm_on_rails"
-  s.version = "0.3.1"
+  s.version = "0.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tie Zhong"]
-  s.date = "2012-04-16"
+  s.date = "2012-04-21"
   s.description = "This is a fork from popular c2dm_on_rails. C2DM on Rails is a Ruby on Rails gem that allows you to easily add Android Cloud to Device Messaging support to your Rails application. This fork adds a daemon to do the actual push.\n"
   s.email = "zhongtie@yahoo.com"
   s.executables = ["c2dms"]
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
     "README.textile"
   ]
   s.files = [
+    ".bundle/config",
     "CHANGELOG",
     "Gemfile",
     "Gemfile.lock",
@@ -31,8 +32,22 @@ Gem::Specification.new do |s|
     "lib/c2dm_on_rails/app/models/c2dm/device.rb",
     "lib/c2dm_on_rails/app/models/c2dm/notification.rb",
     "lib/c2dm_on_rails/c2dm_on_rails.rb",
+    "lib/c2dm_on_rails/daemon.rb",
+    "lib/c2dm_on_rails/daemon/connection.rb",
+    "lib/c2dm_on_rails/daemon/database_reconnectable.rb",
+    "lib/c2dm_on_rails/daemon/delivery_error.rb",
+    "lib/c2dm_on_rails/daemon/delivery_handler.rb",
+    "lib/c2dm_on_rails/daemon/delivery_handler_pool.rb",
+    "lib/c2dm_on_rails/daemon/delivery_queue.rb",
+    "lib/c2dm_on_rails/daemon/disconnection_error.rb",
+    "lib/c2dm_on_rails/daemon/feeder.rb",
+    "lib/c2dm_on_rails/daemon/interruptible_sleep.rb",
+    "lib/c2dm_on_rails/daemon/logger.rb",
+    "lib/c2dm_on_rails/daemon/pool.rb",
+    "lib/c2dm_on_rails/daemon/rapns",
     "lib/c2dm_on_rails/libs/connection.rb",
     "lib/c2dm_on_rails/tasks/c2dm.rake",
+    "lib/c2dm_on_rails/version.rb",
     "lib/c2dm_on_rails_tasks.rb",
     "lib/generators/c2dm_migrations_generator.rb",
     "lib/generators/templates/c2dm_migrations/create_c2dm_devices.rb",
