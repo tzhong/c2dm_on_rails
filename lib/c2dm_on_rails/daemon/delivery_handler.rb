@@ -3,9 +3,9 @@ module C2dm
 		class DeliveryHandler
 			include DatabaseReconnectable
 
-			STOP = 0x666
-			SELECT_TIMEOUT = 0.5
-			ERROR_TUPLE_BYTES = 6
+			C2DM_STOP = 0x666 unless const_defined?(:C2DM_STOP)
+			#  SELECT_TIMEOUT = 0.5
+			#  ERROR_TUPLE_BYTES = 6
 			#  C2DM_ERRORS = {
 			#  	1 => "Processing error",
 			#  	2 => "Missing device token",
@@ -40,7 +40,7 @@ module C2dm
 
 			def stop
 				@stop = true
-				C2dm::Daemon.delivery_queue.push(STOP)
+				C2dm::Daemon.delivery_queue.push(C2DM_STOP)
 			end
 
 			protected
@@ -101,7 +101,7 @@ module C2dm
 			def handle_next_notification
 				notification = C2dm::Daemon.delivery_queue.pop
 
-				if notification == STOP
+				if notification == C2DM_STOP
 					#TODO: what for c2dm?
 					#  @connection.close
 					return

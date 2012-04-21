@@ -5,7 +5,7 @@ module Mysql2; class Error < StandardError; end; end if !defined?(Mysql2)
 module C2dm
 	module Daemon
 		module DatabaseReconnectable
-			ADAPTER_ERRORS = [ActiveRecord::StatementInvalid, PGError, Mysql::Error, Mysql2::Error]
+			ADAPTER_ERRORS = [ActiveRecord::StatementInvalid, PGError, Mysql::Error, Mysql2::Error] unless const_defined?(:ADAPTER_ERRORS)
 
 			def with_database_reconnect_and_retry
 				begin
