@@ -14,6 +14,10 @@ installation, migration generation and usage is copied from the original apn_on_
 gem. This is also my first rubygem, so please feel free to fix some oditties and please
 comment also.
 
+[Tie] Pimeys' version has been enhanced in this fork:
+. A background daemon sends the notification from a different process
+. [TBD] HTTP keep-alive and pipeline experiments
+
 h2. Requirements:
 
 First it is necessary to sign up to Android Cloud to Device Messaging service.
@@ -28,7 +32,7 @@ h2. Installing:
 
 Add the following line to your Gemfile:
 <pre><code>
-   gem 'c2dm_on_rails'
+   gem 'c2dm_on_rails', :git => "git://github.com/tzhong/c2dm_on_rails.git"
 </code></pre>
 
 h2. Setup and Configuration:
@@ -92,6 +96,17 @@ You can use the following Rake task to deliver your notifications:
 <pre><code>
   $ rake c2dm:notifications:deliver
 </code></pre>
+
+To run the daemon:
+<pre><code>
+  $ cd RAILS_ROOT; c2dms <RAILS_ENV>
+</code></pre>
+
+To run the daemon in the foreground:
+<pre><code>
+  $ cd RAILS_ROOT; c2dms <RAILS_ENV> --foreground
+</code></pre>
+
 
 The Rake task will find any unsent notifications in the database. If there aren't any notifications
 it will simply do nothing. If there are notifications waiting to be delivered it will login with the provided
