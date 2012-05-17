@@ -70,9 +70,7 @@ h3. Upgrade Notes:
 
 If you are upgrading to a new version of C2dm on Rails you should always run:
 
-<pre><code>
-  $ rails generate c2dm_migrations
-</code></pre>
+<pre><code> $ rails generate c2dm_migrations </code></pre>
 
 That way you ensure you have the latest version of the database tables needed.
 
@@ -98,14 +96,10 @@ You can use the following Rake task to deliver your notifications:
 </code></pre>
 
 To run the daemon:
-<pre><code>
-  $ cd RAILS_ROOT; c2dms <RAILS_ENV>
-</code></pre>
+<pre><code> $ cd RAILS_ROOT; c2dms <RAILS_ENV> </code></pre>
 
 To run the daemon in the foreground:
-<pre><code>
-  $ cd RAILS_ROOT; c2dms <RAILS_ENV> --foreground
-</code></pre>
+<pre><code> $ cd RAILS_ROOT; c2dms <RAILS_ENV> --foreground </code></pre>
 
 
 The Rake task will find any unsent notifications in the database. If there aren't any notifications
