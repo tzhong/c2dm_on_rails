@@ -87,13 +87,12 @@ More information about C2dm services should be read from "http://code.google.com
   >> notification.delay_while_idle = true
   >> notification.data = {"sender_id" => "420", "message_text" => "Wanna go for a ride?"}
   >> notification.save
+
 </code></pre>
 
 You can use the following Rake task to deliver your notifications:
 
-<pre><code>
-  $ rake c2dm:notifications:deliver
-</code></pre>
+<pre><code> $ rake c2dm:notifications:deliver </code></pre>
 
 To run the daemon:
 <pre><code> $ cd RAILS_ROOT; c2dms <RAILS_ENV> </code></pre>

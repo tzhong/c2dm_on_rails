@@ -20,8 +20,9 @@ module C2dm
 
 		self.table_name = "c2dm_notifications"
 
-
+		# All instance methods
 		include ::ActionView::Helpers::TextHelper
+		# All class methods
 		extend ::ActionView::Helpers::TextHelper
 		serialize :data
 
@@ -93,6 +94,7 @@ module C2dm
 				end
 			end
 
+			# Send all pending notifications
 			def send_notifications(notifications = C2dm::Notification.all(:conditions => {:sent_at => nil}, :joins => :device, :readonly => false))
 				unless notifications.nil? || notifications.empty?
 					C2dm::Connection.open do |token|

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "c2dm_on_rails"
-  s.version = "0.3.2"
+  s.version = "0.3.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tie Zhong"]
-  s.date = "2012-04-21"
+  s.date = "2012-06-06"
   s.description = "This is a fork from popular c2dm_on_rails. C2DM on Rails is a Ruby on Rails gem that allows you to easily add Android Cloud to Device Messaging support to your Rails application. This fork adds a daemon to do the actual push.\n"
   s.email = "zhongtie@yahoo.com"
   s.executables = ["c2dms"]
@@ -33,7 +33,6 @@ Gem::Specification.new do |s|
     "lib/c2dm_on_rails/app/models/c2dm/notification.rb",
     "lib/c2dm_on_rails/c2dm_on_rails.rb",
     "lib/c2dm_on_rails/daemon.rb",
-    "lib/c2dm_on_rails/daemon/connection.rb",
     "lib/c2dm_on_rails/daemon/database_reconnectable.rb",
     "lib/c2dm_on_rails/daemon/delivery_error.rb",
     "lib/c2dm_on_rails/daemon/delivery_handler.rb",
@@ -65,17 +64,20 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<jeweler>, [">= 0"])
       s.add_runtime_dependency(%q<configatron>, [">= 0"])
       s.add_runtime_dependency(%q<gdata>, [">= 0"])
+      s.add_runtime_dependency(%q<net-http-persistent>, [">= 0"])
       s.add_runtime_dependency(%q<c2dm_on_rails>, [">= 0"])
     else
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<configatron>, [">= 0"])
       s.add_dependency(%q<gdata>, [">= 0"])
+      s.add_dependency(%q<net-http-persistent>, [">= 0"])
       s.add_dependency(%q<c2dm_on_rails>, [">= 0"])
     end
   else
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<configatron>, [">= 0"])
     s.add_dependency(%q<gdata>, [">= 0"])
+    s.add_dependency(%q<net-http-persistent>, [">= 0"])
     s.add_dependency(%q<c2dm_on_rails>, [">= 0"])
   end
 end
