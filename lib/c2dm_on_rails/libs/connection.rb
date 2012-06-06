@@ -20,7 +20,7 @@ module C2dm
 				#  http = Net::HTTP.new(url.host, url.port)
 				http = Net::HTTP::Persistent::SSLReuse.new url.host, url.port
 				http.use_ssl = true
-				http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+				http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   
 				resp, dat = http.post(url.path, data, headers)
 

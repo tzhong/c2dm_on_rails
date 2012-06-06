@@ -14,9 +14,10 @@ installation, migration generation and usage is copied from the original apn_on_
 gem. This is also my first rubygem, so please feel free to fix some oditties and please
 comment also.
 
-[Tie] Pimeys' version has been enhanced in this fork:
+h2. [Tie] Enhancement in this fork
 . A background daemon sends the notification from a different process
-. [TBD] HTTP keep-alive and pipeline experiments
+. HTTP keep-alive
+. Lazy auth_token update. Same token will be used until a 401 response received
 
 h2. Requirements:
 
@@ -55,8 +56,8 @@ Now, to create the tables you need for C2dm on Rails, run the following task:
 </code></pre>
 
 C2dm on Rails uses the Configatron gem, "http://github.com/markbates/configatron/tree/master":http://github.com/markbates/configatron/tree/master, 
-to configure itself. C2dm on Rails uses also the gdata gem for connecting a Google account. The following is an example of an initializer script to
-be run to configure the gem (you could put it in config/initializers/c2dm_on_rails.rb):
+to configure itself. C2dm on Rails uses also the gdata gem for connecting a Google account. In the branch, net-http-persistent gem is also required.
+The following is an example of an initializer script to be run to configure the gem (you could put it in config/initializers/c2dm_on_rails.rb):
 <pre><code>
   configatron.c2dm.api_url = 'https://android.apis.google.com/c2dm/send'
   configatron.c2dm.username = 'your_user_name'

@@ -46,13 +46,17 @@ module C2dm
 			# 
 			# This can be run from the following Rake task:
 			#   $ rake c2dm:notifications:deliver
-			def send_notification(noty, token)
+			def send_notification(noty)
+
+				token = init_auth_token
 
 				puts "sending notification #{noty.id} to device #{noty.device.registration_id}"
 				response = C2dm::Connection.send_notification(noty, token)
 				puts "response: #{response[:code]}; #{response.inspect}"
 
 				if response[:code] == 200
+					@retrying = false
+
 					case response[:message]
 					when "Error=QuotaExceeded"
 						raise C2dm::Errors::QuotaExceeded.new(response[:message])
@@ -88,8 +92,14 @@ module C2dm
 					raise C2dm::Errors:ServiceUnavailable.new(response[:message])
 
 				elsif response[:code] == 401
-					raise C2dm::Errors::InvalidAuthToken.new(response[:message])
+					# To prevent possible infinite loop
+					raise C2dm::Errors::InvalidAuthToken.new(response[:message]) if @retrying
 
+					C2dm::Connection.open do |token|
+						@auth_token = token
+						@retrying = true
+						return send_notification noty
+					end
 				else
 				end
 			end
@@ -97,12 +107,22 @@ module C2dm
 			# Send all pending notifications
 			def send_notifications(notifications = C2dm::Notification.all(:conditions => {:sent_at => nil}, :joins => :device, :readonly => false))
 				unless notifications.nil? || notifications.empty?
-					C2dm::Connection.open do |token|
-						notifications.each do |noty|
-							send_notification(noty, token)
-						end
+
+					notifications.each do |noty|
+						send_notification(noty)
 					end
 				end
+			end
+
+			def init_auth_token
+				if @auth_token.blank?
+					C2dm::Connection.open do |token|
+						C2dm::Daemon.logger.info("Refreshed c2dm token")
+						@auth_token = token
+					end
+				end
+
+				@auth_token
 			end
 
 		end # class << self

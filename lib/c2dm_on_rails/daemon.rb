@@ -37,11 +37,7 @@ module C2dm
 			self.delivery_handler_pool = DeliveryHandlerPool.new(1)
 			delivery_handler_pool.populate
 
-			logger.info("Updating auth token ...")
-			C2dm::Connection.open{|t| @auth_token = t}
-			logger.info("Token updated: #{@auth_token}")
-
-			logger.info('Ready')
+			#  C2dm::Connection.open{|t| @auth_token = t}
 
 			# EnQueue the notifications for delivery
 			Feeder.start(foreground?)

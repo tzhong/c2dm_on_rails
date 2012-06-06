@@ -28,7 +28,7 @@ module C2dm
 
 			def deliver(notification)
 				begin
-					C2dm::Notification.send_notification(notification, C2dm::Daemon.auth_token)
+					C2dm::Notification.send_notification(notification)
 					C2dm::Daemon.logger.info("Notification #{notification.id} delivered to #{notification.device.registration_id}")
 				rescue Exception => error
 					handle_delivery_error(notification, error)
