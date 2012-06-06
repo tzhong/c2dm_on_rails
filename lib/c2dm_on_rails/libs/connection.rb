@@ -1,5 +1,6 @@
 require 'gdata'
 require 'net/https'
+require 'net/http/persistent'
 require 'uri'
 
 module C2dm
@@ -25,36 +26,6 @@ module C2dm
 				resp, dat = http.post(url.path, data, headers)
 
 				return {:code => resp.code.to_i, :message => dat} 
-
-				# TODO
-				# Performance improvement by using HTTP keep-alive
-
-				#  the private http() method of ActiveResource::Connection to be the
-				#  culprit. The method creates a new Net::HTTP object and returns it.
-				#  When a request is performed with this object, the connection is
-				#  opened and then immediately closed afterwards.
-
-				#  Instead, the method start() could be called on the object, and the 
-				#  object stored as a private instance variable. This way, the same 
-				#  open connection could be used for multiple subsequent requests.
-				#
-				#  So this net/http little known behavior where by default an 
-				#  "Connection: close" header is appended to each request,
-				#  except when you're using the block form
-				#  require 'net/http/pipeline'
-				#  Net::HTTP.start url.host, url.port do |http|
-				#  	http.use_ssl = true
-				#  	http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-				#  	resp, dat = http.post(url.path, data, headers)
-#  
-				#  	#  htt.pipeline = true
-				#  	#  reqs = []
-				#  	#  reqs << http.get('/a.html')
-				#  	#  reqs << http.get('/b.html')
-				#  end
-#  
-				#  {:code => resp.code.to_i, :message => dat}
-
 			end
 
 			def open
