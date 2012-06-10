@@ -96,11 +96,13 @@ You can use the following Rake task to deliver your notifications:
 
 <pre><code> $ rake c2dm:notifications:deliver </code></pre>
 
-To run the daemon:
-<pre><code> $ cd RAILS_ROOT; c2dms <RAILS_ENV> </code></pre>
+h2. Run the c2dm daemon
+
+To run the daemon in the background:
+<pre><code> $ cd RAILS_ROOT; bundle exec c2dms <RAILS_ENV> </code></pre>
 
 To run the daemon in the foreground:
-<pre><code> $ cd RAILS_ROOT; c2dms <RAILS_ENV> --foreground </code></pre>
+<pre><code> $ cd RAILS_ROOT; bundle exec c2dms <RAILS_ENV> --foreground </code></pre>
 
 
 The Rake task will find any unsent notifications in the database. If there aren't any notifications
