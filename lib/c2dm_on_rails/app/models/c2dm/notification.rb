@@ -47,11 +47,22 @@ module C2dm
 			# This can be run from the following Rake task:
 			#   $ rake c2dm:notifications:deliver
 			def send_notification(noty)
+				if (noty.protocol == "c2dm")
+					send_a2pn(noty)
+				elsif (noty.protocol == "acm")
+					send_acm(noty)
+				end
+			end
 
+			def send_acm(noty)
+				resp = C2dm::Connection.send_acm_notification(noty)
+			end
+
+			def send_a2pn(noty)
 				token = init_auth_token
 
 				puts "sending notification #{noty.id} to device #{noty.device.registration_id}"
-				response = C2dm::Connection.send_notification(noty, token)
+				response = C2dm::Connection.send_c2dm_notification(noty, token)
 				puts "response: #{response[:code]}; #{response.inspect}"
 
 				if response[:code] == 200
