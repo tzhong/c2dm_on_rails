@@ -68,6 +68,11 @@ The following is an example of an initializer script to be run to configure the 
   configatron.c2dm.username = 'your_user_name'
   configatron.c2dm.password = 'password_for_the account'
   configatron.c2dm.app_name = 'your_application_name'
+
+  configatron.gcm_on_rails.api_url = 'https://android.googleapis.com/gcm/send'
+  configatron.gcm_on_rails.api_key = 'AAAAAAPPPPPPPIIIIIIIKKKKKEEEEYYYYY'
+  configatron.gcm_on_rails.app_name = 'com.yourapppackage.com'
+  configatron.gcm_on_rails.delivery_format = 'json'
 </code></pre>
 
 That's it, now you're ready to start creating notifications.
