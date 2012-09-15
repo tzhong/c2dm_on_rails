@@ -14,11 +14,15 @@ installation, migration generation and usage is copied from the original apn_on_
 gem. This is also my first rubygem, so please feel free to fix some oditties and please
 comment also.
 
+[For this branch]Many code were borrowed for other similar projects, mostly
+ileitch/rapns(for the daemon logic) and dongdeng/gcm_on_rails(for the GCM implmenttion).
+
 h2. Enhancement in this fork:
 
 . A background daemon sends the notification from a different process
 . HTTP keep-alive
 . Lazy auth_token update. Same token will be used until a 401 response received
+. Some basic GCM, the latest Google push protocol, support is implemented.
 
 h2. Requirements:
 
