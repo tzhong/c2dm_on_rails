@@ -41,9 +41,10 @@ module C2dm
 				yield token
 			end
 
-			def send_acm_notification(notification)
+			def send_gcm_notification(notification)
+				#  debugger
 				api_key = configatron.gcm_on_rails.api_key
-				format = configatron.gcm_on_rails.format
+				format = configatron.gcm_on_rails.delivery_format
 
 				if format == 'json'
 					headers = {"Content-Type" => "application/json",
@@ -51,7 +52,7 @@ module C2dm
 
 					data = notification.data.merge({:collapse_key => notification.collapse_key}) unless notification.collapse_key.nil?
 					data = data.merge({:delay_while_idle => notification.delay_while_idle}) unless notification.delay_while_idle.nil?
-					data = data.merge({:time_to_live => notification.time_to_live}) unless notification.time_to_live.nil?
+					data = data.merge({:registration_ids => [notification.device.registration_id]})
 					data = data.to_json
 				else #plain text format
 					headers = {"Content-Type" => "application/x-www-form-urlencoded;charset=UTF-8",
