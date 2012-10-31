@@ -42,7 +42,6 @@ module C2dm
 			end
 
 			def send_gcm_notification(notification)
-				#  debugger
 				api_key = configatron.gcm_on_rails.api_key
 				format = configatron.gcm_on_rails.delivery_format
 
