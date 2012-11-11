@@ -4,14 +4,16 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "c2dm_on_rails"
-  s.version = "0.3.4"
+  s.name = %q{c2dm_on_rails}
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tie Zhong"]
-  s.date = "2012-11-11"
-  s.description = "This is a fork from popular c2dm_on_rails. C2DM on Rails is a Ruby on Rails gem that allows you to easily add Android Cloud to Device Messaging support to your Rails application. This fork adds a daemon to do the actual push.\n"
-  s.email = "zhongtie@yahoo.com"
+  s.date = %q{2012-11-11}
+  s.default_executable = %q{c2dms}
+  s.description = %q{This is a fork from popular c2dm_on_rails. C2DM on Rails is a Ruby on Rails gem that allows you to easily add Android Cloud to Device Messaging support to your Rails application. This fork adds a daemon to do the actual push.
+}
+  s.email = %q{zhongtie@yahoo.com}
   s.executables = ["c2dms"]
   s.extra_rdoc_files = [
     "LICENSE",
@@ -52,15 +54,16 @@ Gem::Specification.new do |s|
     "lib/generators/templates/c2dm_migrations/create_c2dm_devices.rb",
     "lib/generators/templates/c2dm_migrations/create_c2dm_notifications.rb"
   ]
-  s.homepage = "http://github.com/tzhong/c2dm_on_rails"
+  s.homepage = %q{http://github.com/tzhong/c2dm_on_rails}
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
-  s.summary = "Android Cloud to Device Messaging (push notifications) on Rails"
+  s.rubygems_version = %q{1.3.6}
+  s.summary = %q{Android Cloud to Device Messaging (push notifications) on Rails}
 
   if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<jeweler>, [">= 0"])
       s.add_runtime_dependency(%q<configatron>, [">= 0"])
       s.add_runtime_dependency(%q<gdata>, [">= 0"])

@@ -1,11 +1,12 @@
 PATH
   remote: .
   specs:
-    c2dm_on_rails (0.3.2)
+    c2dm_on_rails (0.3.4)
       c2dm_on_rails
       configatron
       gdata
       jeweler
+      net-http-persistent
 
 GEM
   remote: http://rubygems.org/
