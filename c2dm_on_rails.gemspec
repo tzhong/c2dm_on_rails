@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "c2dm_on_rails"
-  s.version = "0.3.3"
+  s.version = "0.3.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tie Zhong"]
-  s.date = "2012-06-06"
+  s.date = "2012-11-11"
   s.description = "This is a fork from popular c2dm_on_rails. C2DM on Rails is a Ruby on Rails gem that allows you to easily add Android Cloud to Device Messaging support to your Rails application. This fork adds a daemon to do the actual push.\n"
   s.email = "zhongtie@yahoo.com"
   s.executables = ["c2dms"]
