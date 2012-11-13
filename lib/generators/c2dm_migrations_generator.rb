@@ -18,7 +18,9 @@ class C2dmMigrationsGenerator < Rails::Generators::Base
 	def create_migrations
 		templates = {
 			'create_c2dm_devices.rb' => 'db/migrate/create_c2dm_devices.rb',
-			'create_c2dm_notifications.rb' => 'db/migrate/create_c2dm_notifications.rb'
+			'create_c2dm_notifications.rb' => 'db/migrate/create_c2dm_notifications.rb',
+			'create_gcm_devices.rb' => 'db/migrate/create_gcm_devices.rb',
+			'create_gcm_notifications.rb' => 'db/migrate/create_gcm_notifications.rb'
 		}
 
 		templates.each_pair do |name, path|

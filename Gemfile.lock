@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    c2dm_on_rails (0.3.4)
+    c2dm_on_rails (0.4.0)
       c2dm_on_rails
       configatron
       gdata

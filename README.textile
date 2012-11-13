@@ -16,6 +16,7 @@ comment also.
 
 [For this branch]Many code were borrowed for other similar projects, mostly
 ileitch/rapns(for the daemon logic) and dongdeng/gcm_on_rails(for the GCM implmenttion).
+Thanks!!
 
 h2. Enhancement in this fork:
 
